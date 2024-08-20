@@ -1,0 +1,26 @@
+@startuml Diagrama_Casos
+
+actor Administrador
+actor Cliente
+actor Trabajador
+
+Administrador -> (Gestionar Usuarios)
+Administrador -> (Gestionar Libros)
+Administrador -> (Gestionar Prestamos)
+Trabajador -> (Gestionar Prestamos)
+Trabajador -> (Agrega Clientes)
+
+Cliente -> (Consultar Libros)
+Cliente -> (Realizar Prestamo)
+Cliente -> (Devolver Libro)
+
+(Gestionar Usuarios) --> (Añadir Trabajadores)
+(Gestionar Usuarios) --> (Eliminar Trabajadores)
+(Gestionar Libros) --> (Añadir Libro)
+(Gestionar Libros) --> (Eliminar Libro)
+(Gestionar Prestamos) --> (Registrar Prestamo)
+(Gestionar Prestamos) --> (Registrar Devolucion)
+(Realizar Prestamo) --> (Solicitar Prestamo)
+(Devolver Libro) --> (Entregar Libro)
+
+@enduml

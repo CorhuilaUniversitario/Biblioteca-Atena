@@ -1,0 +1,18 @@
+@startuml Diagrama_Secuencia
+
+actor Trabajador
+participant Sistema
+participant Usuario
+participant Libro
+participant Prestamo
+
+Trabajador -> Sistema: Solicitar Prestamo
+Sistema -> Usuario: Validar Usuario
+Usuario -> Sistema: Confirmar Usuario
+Sistema -> Libro: Verificar Disponibilidad
+Libro -> Sistema: Confirmar Disponibilidad
+Sistema -> Prestamo: Registrar Prestamo
+Prestamo -> Sistema: Confirmar Registro
+Sistema -> Trabajador: Confirmar Prestamo
+
+@enduml

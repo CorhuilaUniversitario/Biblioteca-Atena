@@ -1,0 +1,43 @@
+@startuml Diagrama_Clases
+
+class Usuario {
+    +id_usuario: INT
+    +nombre: VARCHAR(100)
+    +cedula: FLOAT
+    +email: VARCHAR(100)
+    +clave: VARCHAR(100)
+    +rol: ENUM('trabajador', 'administrador')
+    +fecha_registro: TIMESTAMP
+}
+
+class Libro {
+    +id_libro: INT
+    +titulo: VARCHAR(255)
+    +autor: VARCHAR(255)
+    +categoria: VARCHAR(100)
+    +copias: INT
+    +estado: VARCHAR(255)
+    +fecha_registro: TIMESTAMP
+}
+
+class Cliente {
+    +id_cliente: INT
+    +nombre: VARCHAR(100)
+    +cedula: FLOAT
+    +telefono: FLOAT
+    +email: VARCHAR(100)
+    +fecha_registro: TIMESTAMP
+}
+
+class Prestamo {
+    +id_prestamo: INT
+    +fecha_prestamo: DATE
+    +fecha_devolucion: DATE
+    +estado: ENUM('prestado', 'devuelto')
+}
+
+Usuario "1" -- "*" Prestamo: realiza >
+Cliente "1" -- "*" Prestamo: solicita >
+Libro "1" -- "*" Prestamo: es prestado en >
+
+@enduml
