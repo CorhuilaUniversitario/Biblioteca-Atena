@@ -1,26 +1,13 @@
 @startuml Diagrama_Casos
 
-actor Administrador
-actor Cliente
-actor Trabajador
+actor Bibliotecario
 
-Administrador -> (Gestionar Usuarios)
-Administrador -> (Gestionar Libros)
-Administrador -> (Gestionar Prestamos)
-Trabajador -> (Gestionar Prestamos)
-Trabajador -> (Agrega Clientes)
-
-Cliente -> (Consultar Libros)
-Cliente -> (Realizar Prestamo)
-Cliente -> (Devolver Libro)
-
-(Gestionar Usuarios) --> (Añadir Trabajadores)
-(Gestionar Usuarios) --> (Eliminar Trabajadores)
-(Gestionar Libros) --> (Añadir Libro)
-(Gestionar Libros) --> (Eliminar Libro)
-(Gestionar Prestamos) --> (Registrar Prestamo)
-(Gestionar Prestamos) --> (Registrar Devolucion)
-(Realizar Prestamo) --> (Solicitar Prestamo)
-(Devolver Libro) --> (Entregar Libro)
+Bibliotecario -> (Registrar Cliente)
+Bibliotecario -> (Registrar Libro)
+Bibliotecario -> (Realizar Préstamo)
+Bibliotecario -> (Actualizar Estado de Préstamo)
+Bibliotecario -> (Consultar Información del Cliente)
+Bibliotecario -> (Consultar Información del Libro)
+Bibliotecario -> (Consultar Historial de Préstamos)
 
 @enduml

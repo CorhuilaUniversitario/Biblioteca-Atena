@@ -1,43 +1,39 @@
 @startuml Diagrama_Clases
 
-class Usuario {
-    +id_usuario: INT
-    +nombre: VARCHAR(100)
-    +cedula: FLOAT
-    +email: VARCHAR(100)
-    +clave: VARCHAR(100)
-    +rol: ENUM('trabajador', 'administrador')
-    +fecha_registro: TIMESTAMP
+class Cliente {
+    +id : int
+    +nombre : String
+    +cedula : String
+    +telefono : float
+    +email : String
+    
+    +registrarCliente() : void
+    +actualizarDatos() : void
 }
 
 class Libro {
-    +id_libro: INT
-    +titulo: VARCHAR(255)
-    +autor: VARCHAR(255)
-    +categoria: VARCHAR(100)
-    +copias: INT
-    +estado: VARCHAR(255)
-    +fecha_registro: TIMESTAMP
-}
-
-class Cliente {
-    +id_cliente: INT
-    +nombre: VARCHAR(100)
-    +cedula: FLOAT
-    +telefono: FLOAT
-    +email: VARCHAR(100)
-    +fecha_registro: TIMESTAMP
+    +id : int
+    +titulo : String
+    +autor : String
+    +categoria : String
+    
+    +registrarLibro() : void
+    +actualizarInformacion() : void
 }
 
 class Prestamo {
-    +id_prestamo: INT
-    +fecha_prestamo: DATE
-    +fecha_devolucion: DATE
-    +estado: ENUM('prestado', 'devuelto')
+    +id : int
+    +estado : String
+    +cantidad : int
+    +fechaPrestamo : Timestamp
+    +fechaDevolucion : Timestamp
+    
+    +iniciarPrestamo() : void
+    +devolverLibro() : void
+    +actualizarEstado() : void
 }
 
-Usuario "1" -- "*" Prestamo: realiza >
-Cliente "1" -- "*" Prestamo: solicita >
-Libro "1" -- "*" Prestamo: es prestado en >
+Cliente "1" --o "*" Prestamo : realiza
+Libro "1" --o "*" Prestamo : incluye
 
 @enduml

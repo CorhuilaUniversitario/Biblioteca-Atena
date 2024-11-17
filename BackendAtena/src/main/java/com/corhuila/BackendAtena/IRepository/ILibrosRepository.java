@@ -1,8 +1,7 @@
 package com.corhuila.BackendAtena.IRepository;
 
 import com.corhuila.BackendAtena.Entity.Libros;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface ILibrosRepository extends IBaseRepository<Libros, Long>{
+public interface ILibrosRepository extends JpaRepository<Libros, Integer> {
 }

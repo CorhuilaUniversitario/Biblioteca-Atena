@@ -5,54 +5,49 @@ import java.util.Date;
 
 @Entity
 @Table(name = "prestamos")
-public class Prestamos extends ABaseEntity{
+public class Prestamos{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_cliente", nullable = false, unique = true)
-    private Clientes idCliente;
-
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_libro", nullable = false, unique = true)
-    private Libros idLibro;
+    @Column(name = "cantidad", nullable = false)
+    private Integer cantidad;
 
     @Column(name = "fecha_prestamo", nullable = false)
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPrestamo;
 
     @Column(name = "fecha_devolucion")
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaDevolucion;
 
     @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "id_Usuario", nullable = false, unique = true)
-    private Usuarios idUsuario;
+    @JoinColumn(name = "clientes_id")
+    private Clientes clientesId;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "estado", nullable = false)
-    private Estado estado = Estado.PRESTADO;
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @JoinColumn(name = "libros_id")
+    private Libros librosId;
 
-    public enum Estado {
-        PRESTADO,
-        DEVUELTO
-    }
-
+    @Column(name = "estado", length = 100, nullable = false)
+    private String estado;
 
     // Getters and Setters
 
-    public Clientes getIdCliente() {
-        return idCliente;
+    public Integer getId() {
+        return id;
     }
 
-    public void setIdCliente(Clientes idCliente) {
-        this.idCliente = idCliente;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public Libros getIdLibro() {
-        return idLibro;
+    public Integer getCantidad() {
+        return cantidad;
     }
 
-    public void setIdLibro(Libros idLibro) {
-        this.idLibro = idLibro;
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
     public Date getFechaPrestamo() {
@@ -71,19 +66,27 @@ public class Prestamos extends ABaseEntity{
         this.fechaDevolucion = fechaDevolucion;
     }
 
-    public Usuarios getIdUsuario() {
-        return idUsuario;
+    public Clientes getClientesId() {
+        return clientesId;
     }
 
-    public void setIdUsuario(Usuarios idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setClientesId(Clientes hola) {
+        this.clientesId = hola;
     }
 
-    public Estado getEstado() {
+    public Libros getLibrosId() {
+        return librosId;
+    }
+
+    public void setLibrosId(Libros librosId) {
+        this.librosId = librosId;
+    }
+
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(Estado estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 }

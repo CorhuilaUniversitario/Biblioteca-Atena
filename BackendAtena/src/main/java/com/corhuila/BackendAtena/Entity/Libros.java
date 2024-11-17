@@ -5,22 +5,29 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "libros")
-public class Libros extends ABaseEntity{
+public class Libros{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
 
-    @Column(name = "titulo", length = 255, nullable = false)
+    @Column(name = "titulo", length = 200, nullable = false)
     private String titulo;
 
-    @Column(name = "autor", length = 255, nullable = false)
+    @Column(name = "autor", length = 200, nullable = false)
     private String autor;
 
-    @Column(name = "categoria", length = 100, nullable = false)
+    @Column(name = "categoria", length = 200, nullable = false)
     private String categoria;
-
-    @Column(name = "copias", nullable = false)
-    private Integer copias;
 
 
     // Getters and Setters
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getTitulo() {
         return titulo;
@@ -45,13 +52,4 @@ public class Libros extends ABaseEntity{
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
-
-    public Integer getCopias() {
-        return copias;
-    }
-
-    public void setCopias(Integer copias) {
-        this.copias = copias;
-    }
-
 }

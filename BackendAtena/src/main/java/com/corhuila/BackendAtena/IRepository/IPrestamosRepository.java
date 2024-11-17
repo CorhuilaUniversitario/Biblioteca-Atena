@@ -1,8 +1,7 @@
 package com.corhuila.BackendAtena.IRepository;
 
 import com.corhuila.BackendAtena.Entity.Prestamos;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface IPrestamosRepository extends IBaseRepository<Prestamos, Long>{
+public interface IPrestamosRepository extends JpaRepository<Prestamos, Integer> {
 }
